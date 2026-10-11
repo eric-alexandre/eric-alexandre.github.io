@@ -78,7 +78,7 @@ export const content: Record<Lang, Content> = {
           role: 'Tech Founder',
           tagline: 'AI voice agents that answer and make calls for businesses.',
           description:
-            'Companies use Pipevoz to set up voice agents that answer their phone lines, run outbound call campaigns and talk to visitors on their websites. The platform covers the whole flow: the live conversation, the CRM where teams follow up on each lead, and billing.',
+            'Companies use Pipevoz to set up voice agents that answer their phone lines, run outbound call campaigns and talk to visitors on their websites. The platform covers the whole flow: the live conversation, the CRM where teams follow up on each lead, and billing. We ran and validated a pilot with a major bank in Brasília.',
           built: [
             'Real-time voice pipeline (speech-to-text → LLM → text-to-speech) with LiveKit, connected to SIP telephony and Asterisk',
             'Outbound dialer with queues, concurrent calls, retry rules and scheduling on Celery workers',
@@ -191,7 +191,7 @@ export const content: Record<Lang, Content> = {
           role: 'Tech Founder',
           tagline: 'Agentes de voz com IA que atendem e fazem ligações para empresas.',
           description:
-            'Empresas usam o Pipevoz para criar agentes de voz que atendem suas linhas telefônicas, fazem campanhas de ligação e conversam com visitantes no site. A plataforma cobre o fluxo inteiro: a conversa ao vivo, o CRM onde o time acompanha cada lead e o billing.',
+            'Empresas usam o Pipevoz para criar agentes de voz que atendem suas linhas telefônicas, fazem campanhas de ligação e conversam com visitantes no site. A plataforma cobre o fluxo inteiro: a conversa ao vivo, o CRM onde o time acompanha cada lead e o billing. Realizamos e validamos um piloto com um grande banco de Brasília.',
           built: [
             'Pipeline de voz em tempo real (fala → LLM → voz) com LiveKit, conectado à telefonia SIP e ao Asterisk',
             'Discador outbound com filas, chamadas simultâneas, regras de retentativa e agendamento em workers Celery',
