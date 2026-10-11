@@ -1,0 +1,212 @@
+---
+import '../styles/global.css';
+import { content, type Lang } from '../i18n';
+import { site } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = content[lang];
+const paths: Record<Lang, string> = { en: '/', pt: '/pt/' };
+const abs = (path: string) => new URL(path, Astro.site ?? Astro.url).href;
+const year = new Date().getFullYear();
+
+const formatWhatsapp = (n: string) =>
+  n.length === 13 && n.startsWith('55')
+    ? `+55 ${n.slice(2, 4)} ${n.slice(4, 9)}-${n.slice(9)}`
+    : `+${n}`;
+
+const contacts = [
+  { label: t.contact.email, value: site.email, href: `mailto:${site.email}` },
+  { label: t.contact.whatsapp, value: formatWhatsapp(site.whatsapp), href: `https://wa.me/${site.whatsapp}` },
+  { label: t.contact.linkedin, value: site.linkedin.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''), href: site.linkedin },
+];
+---
+
+<!doctype html>
+<html lang={t.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={abs(paths[lang])} />
+    <link rel="alternate" hreflang="en" href={abs(paths.en)} />
+    <link rel="alternate" hreflang="pt-BR" href={abs(paths.pt)} />
+    <link rel="alternate" hreflang="x-default" href={abs(paths.en)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0e0d" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={abs(paths[lang])} />
+    <meta property="og:locale" content={lang === 'pt' ? 'pt_BR' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href={paths[lang]} class="brand">{site.name}</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#experience">{t.nav.experience}</a>
+          <a href="#work">{t.nav.work}</a>
+          <a href="#stack">{t.nav.stack}</a>
+          <a href="#contact">{t.nav.contact}</a>
+        </nav>
+        <div class="lang" role="group" aria-label="Language">
+          <a href={paths.en} hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+          <a href={paths.pt} hreflang="pt-BR" aria-current={lang === 'pt' ? 'true' : undefined}>PT</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <img class="avatar reveal" src="/eric.png" alt={site.name} width="112" height="112" />
+        <h1 class="reveal">{site.name}</h1>
+        <p class="role reveal">{t.hero.role}</p>
+        <p class="lead reveal">{t.hero.tagline}</p>
+        <p class="meta reveal">
+          <span>{t.hero.location}</span>
+          <span class="status"><span class="dot" aria-hidden="true"></span>{t.hero.availability}</span>
+        </p>
+        <div class="actions reveal">
+          <a href="#contact" class="btn">{t.hero.ctaPrimary}</a>
+          <a href="#work" class="link-arrow">{t.hero.ctaSecondary} <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section id="experience" class="section container" aria-labelledby="experience-title">
+        <h2 id="experience-title" class="section-label">{t.experience.label}</h2>
+        <ol class="experience reveal">
+          {
+            t.experience.items.map((x) => (
+              <li class="experience-row">
+                <span class="experience-period">{x.period}</span>
+                <span class="experience-role">
+                  {x.role} <span class="experience-company">· {x.company}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section id="work" class="section container" aria-labelledby="work-title">
+        <h2 id="work-title" class="section-label">{t.work.label}</h2>
+        {
+          t.work.projects.map((p, i) => (
+            <article class="project reveal" id={p.id}>
+              <div class="project-side">
+                <span class="project-index">{String(i + 1).padStart(2, '0')}</span>
+                <span class="project-role">{p.role}</span>
+              </div>
+              <div class="project-body">
+                <header class="project-head">
+                  <div class="project-title">
+                    <span class:list={['project-logo', { tile: p.logoInvert }]}>
+                      <img src={p.logo} alt="" width="40" height="40" loading="lazy" />
+                    </span>
+                    <h3>{p.name}</h3>
+                  </div>
+                  {p.url && (
+                    <a class="project-link" href={p.url} target="_blank" rel="noopener">
+                      {p.urlLabel}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </header>
+                <p class="project-role-inline">{p.role}</p>
+                <p class="tagline">{p.tagline}</p>
+                <p class="description">{p.description}</p>
+                <h4 class="mini-label">{t.work.builtLabel}</h4>
+                <ul class="built">
+                  {p.built.map((b) => (
+                    <li>{b}</li>
+                  ))}
+                </ul>
+                <ul class="chips" aria-label={t.work.stackLabel}>
+                  {p.stack.map((s) => (
+                    <li>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <section id="stack" class="section container" aria-labelledby="stack-title">
+        <h2 id="stack-title" class="section-label">{t.stack.label}</h2>
+        <dl class="stack reveal">
+          {
+            t.stack.groups.map((g) => (
+              <div class="stack-row">
+                <dt>{g.name}</dt>
+                <dd>{g.items.join(' · ')}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <section id="contact" class="section container" aria-labelledby="contact-title">
+        <h2 id="contact-title" class="section-label">{t.contact.label}</h2>
+        <div class="reveal">
+          <p class="contact-headline">{t.contact.headline}</p>
+          <p class="contact-text">{t.contact.text}</p>
+          <ul class="contact-list">
+            {
+              contacts.map((c) => (
+                <li>
+                  <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+                    <span class="contact-label">{c.label}</span>
+                    <span class="contact-value">{c.value}</span>
+                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <span>© {year} {site.name}</span>
+      <span>{t.footer.builtWith}</span>
+    </footer>
+
+    <script is:inline>
+      (() => {
+        const els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          els.forEach((el) => el.classList.add('in'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px' }
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
