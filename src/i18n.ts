@@ -65,7 +65,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     work: {
-      label: 'Projects',
+      label: 'Relevant projects',
       builtLabel: 'Highlights',
       stackLabel: 'Stack',
       projects: [
@@ -178,7 +178,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     work: {
-      label: 'Projetos',
+      label: 'Projetos relevantes',
       builtLabel: 'Destaques',
       stackLabel: 'Stack',
       projects: [
