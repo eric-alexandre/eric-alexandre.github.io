@@ -492,44 +492,6 @@ h1 {
   font-size: 15px;
 }
 
-/* Experience */
-
-.experience {
-  margin: 0;
-  padding: 8px 0 0;
-  list-style: none;
-}
-
-.experience-row {
-  display: grid;
-  grid-template-columns: 9.5rem 1fr;
-  gap: 24px;
-  padding-block: 14px;
-  border-bottom: 1px solid var(--line);
-}
-
-.experience-row:last-child {
-  border-bottom: 0;
-}
-
-.experience-period {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--subtle);
-  padding-top: 2px;
-  white-space: nowrap;
-}
-
-.experience-role {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.experience-company {
-  font-weight: 400;
-  color: var(--muted);
-}
-
 /* Contact */
 
 .contact-headline {
@@ -647,7 +609,6 @@ h1 {
   }
 
   .stack-row,
-  .experience-row,
   .contact-list a {
     grid-template-columns: 1fr;
     gap: 4px;

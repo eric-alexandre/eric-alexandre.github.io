@@ -17,7 +17,7 @@ type Project = {
 export type Content = {
   htmlLang: string;
   meta: { title: string; description: string };
-  nav: { experience: string; work: string; stack: string; contact: string };
+  nav: { work: string; stack: string; contact: string };
   hero: {
     role: string;
     tagline: string;
@@ -26,7 +26,6 @@ export type Content = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
-  experience: { label: string; items: { period: string; role: string; company: string }[] };
   work: { label: string; builtLabel: string; stackLabel: string; projects: Project[] };
   stack: { label: string; groups: { name: string; items: string[] }[] };
   contact: { label: string; headline: string; text: string; email: string; whatsapp: string; linkedin: string };
@@ -44,7 +43,7 @@ export const content: Record<Lang, Content> = {
       title: 'Eric Alexandre — Software Engineer',
       description: 'Eric Alexandre is a software engineer and tech founder from Brazil, with a background in operations and sales.',
     },
-    nav: { experience: 'Experience', work: 'Projects', stack: 'Stack', contact: 'Contact' },
+    nav: { work: 'Projects', stack: 'Stack', contact: 'Contact' },
     hero: {
       role: 'Software Engineer',
       tagline: 'Tech founder with a background in operations and sales. Building businesses from idea to production.',
@@ -52,14 +51,6 @@ export const content: Record<Lang, Content> = {
       availability: 'Open to international roles',
       ctaPrimary: 'Get in touch',
       ctaSecondary: 'See projects',
-    },
-    experience: {
-      label: 'Experience',
-      items: [
-        { period: 'Mar 2026 — Oct 2026', role: 'Tech Founder', company: 'Pipevoz' },
-        { period: 'Jul 2025 — Mar 2026', role: 'Tech Founder', company: 'x-n.dev' },
-        { period: 'Apr 2024 — Jan 2026', role: 'Co-founder & Full Stack Developer', company: 'Vozis' },
-      ],
     },
     work: {
       label: 'Relevant projects',
@@ -154,7 +145,7 @@ export const content: Record<Lang, Content> = {
       title: 'Eric Alexandre — Engenheiro de Software',
       description: 'Eric Alexandre é engenheiro de software e tech founder no Brasil, com experiência em operações e vendas.',
     },
-    nav: { experience: 'Experiência', work: 'Projetos', stack: 'Stack', contact: 'Contato' },
+    nav: { work: 'Projetos', stack: 'Stack', contact: 'Contato' },
     hero: {
       role: 'Engenheiro de Software',
       tagline: 'Tech founder com experiência em operações e vendas. Desenvolvendo negócios da ideia à produção.',
@@ -162,14 +153,6 @@ export const content: Record<Lang, Content> = {
       availability: 'Aberto a vagas internacionais',
       ctaPrimary: 'Entrar em contato',
       ctaSecondary: 'Ver projetos',
-    },
-    experience: {
-      label: 'Experiência',
-      items: [
-        { period: 'mar 2026 — out 2026', role: 'Tech Founder', company: 'Pipevoz' },
-        { period: 'jul 2025 — mar 2026', role: 'Tech Founder', company: 'x-n.dev' },
-        { period: 'abr 2024 — jan 2026', role: 'Co-founder & Full Stack Developer', company: 'Vozis' },
-      ],
     },
     work: {
       label: 'Projetos relevantes',
