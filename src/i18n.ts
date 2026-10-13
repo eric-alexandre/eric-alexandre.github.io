@@ -59,9 +59,6 @@ export const content: Record<Lang, Content> = {
         { period: 'Mar 2026 — Oct 2026', role: 'Tech Founder', company: 'Pipevoz' },
         { period: 'Jul 2025 — Mar 2026', role: 'Tech Founder', company: 'x-n.dev' },
         { period: 'Apr 2024 — Jan 2026', role: 'Co-founder & Full Stack Developer', company: 'Vozis' },
-        { period: 'Jan 2023 — Jun 2025', role: 'Operations Manager', company: 'Contabull' },
-        { period: 'Oct 2021 — Aug 2022', role: 'Systems Manager', company: 'Brasil Vantagens' },
-        { period: 'Aug 2021 — Dec 2021', role: 'SDR', company: 'Brasil Vantagens' },
       ],
     },
     work: {
@@ -172,9 +169,6 @@ export const content: Record<Lang, Content> = {
         { period: 'mar 2026 — out 2026', role: 'Tech Founder', company: 'Pipevoz' },
         { period: 'jul 2025 — mar 2026', role: 'Tech Founder', company: 'x-n.dev' },
         { period: 'abr 2024 — jan 2026', role: 'Co-founder & Full Stack Developer', company: 'Vozis' },
-        { period: 'jan 2023 — jun 2025', role: 'Gerente Operacional', company: 'Contabull' },
-        { period: 'out 2021 — ago 2022', role: 'Gerente de Sistemas', company: 'Brasil Vantagens' },
-        { period: 'ago 2021 — dez 2021', role: 'SDR', company: 'Brasil Vantagens' },
       ],
     },
     work: {
